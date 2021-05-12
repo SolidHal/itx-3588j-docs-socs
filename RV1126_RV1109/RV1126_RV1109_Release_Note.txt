@@ -1,5 +1,28 @@
 ===========RV1126/RV1109 Linux SDK Release Note===========
 
+[ rv1126_rv1109_linux_v2.1.0_20210512.xml ]
+
+    SDK update lists:
+
+	1. camera_engine_rkaiq:
+		- Add IQ XML for ISP20 AVL
+		- calib fix mfnr/sharp/filter params conversion error
+	2. RGA
+		- Modify the alignment of the YUV format
+		- Docs Update some format restrictions
+		- im2d_api Support rotation and mirror configuration
+		- im2d_api Some updates
+	3. MPP
+		- mpp_mem_pool Add put_pool function
+		- mpp_buffer Use mem pool reduce malloc free
+		- h264d Reduce malloc free
+		- mpp_buf_slot Use preallocated log storage
+		- jpegd Fix deinit MppFrame with mpp_free error
+		- mpp_mem_pool Fix destruction error on Android
+	4. u-boot
+		- fix spi nor and eMMC thunder-boot boot-up
+
+
 [ rv1126_rv1109_linux_v2.0.0_20210430.xml ]
 
     SDK update lists:
