@@ -7,6 +7,12 @@
 [TOC]
 
 ---
+## rk3399_linux_release_v2.7.0_20210520.xml Release Note
+
+```
+- Update new SDK
+```
+
 ## rk3399_linux_release_v2.5.1_20201203.xml Release Note
 
 **Buildroot (2018.02-rc3)**:

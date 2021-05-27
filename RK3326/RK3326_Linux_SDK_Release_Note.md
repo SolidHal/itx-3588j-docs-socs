@@ -7,6 +7,13 @@
 [TOC]
 
 ---
+
+## rk3326_linux_release_v1.5.0_20210520.xml Release Note
+
+```
+- UUpdate new SDK
+```
+
 ## rk3326_linux_release_v1.4.0_20201203.xml Release Note
 
 **Buildroot (2018.02-rc3)**:

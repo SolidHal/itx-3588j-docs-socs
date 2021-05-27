@@ -8,6 +8,12 @@
 
 ---
 
+## rk3288_linux_release_v2.4.0_20210520.xml Release Note
+
+```
+- Update new SDK
+```
+
 ## rk3288_linux_release_v2.3.0_20201203.xml Release Note
 
 **Buildroot (2018.02-rc3)**:
