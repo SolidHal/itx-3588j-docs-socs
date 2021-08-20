@@ -1,5 +1,570 @@
 ===========RV1126/RV1109 Linux SDK Release Note===========
 
+[ rv1126_rv1109_linux_v2.2.0_20210825.xml ]
+
+    SDK update lists:
+
+	1. System
+		- Resolve spi nor thunder-boot bring-up
+		- Add dictionary-pen reference configuration
+
+    2. Docs update these:
+		- docs/RV1126_RV1109/Fastboot/Rockchip_Developer_Guide_RV1126_RV1109_Battery_Product_CN.pdf
+		- docs/RV1126_RV1109/Fastboot/Rockchip_Developer_Guide_RV1126_RV1109_Battery_Product_EN.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_CN_v1.0.6.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_EN_v1.0.6.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109_IO_Power_Domain_Configuration_Developer_Guide.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109_IO_电源域配置指南.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109_Release_Note.txt
+		- docs/RV1126_RV1109/Rockchip_RV1126_RV1109_Instruction_Linux_Separate_Building_EN.pdf
+
+    3. Camera_engine_rkaiq: update AIQ version to v1.0x67.2, the detail are as follows:
+		- ACCM: get ae exp from RKAiqAecExpInfo_t
+		- AE: add log & sihist data
+		- AE: modify ReConfig Check
+		- AE: modify cnoverge state for AF
+		- AF: AfCalcMaxPos is not reliable, remove it
+		- AF: add thers value for quick found
+		- AF: add xml param to control zoom focus position record
+		- AF: add zoom/focus reset api
+		- AF: calculate lowpassfv in window a
+		- AF: change zoomfocus_tbl
+		- AF: do zoom/focus correction firstly in module calib mode
+		- AF: fix ae is locked switch day/night and hdr/normal mode
+		- AF: fix crash in find_pi function sometimes
+		- AF: fix crash in genIspAfResult when use user ae lib
+		- AF: fix crash in searching
+		- AF: fix custom af can not control ae on/off
+		- AF: fix focus failure with vcm motor
+		- AF: fix may crash when return to wide position after finish calibration
+		- AF: fix motor is moved when switch day/night and hdr/normal mode
+		- AF: fix picture shake problem when change focus in manual mode
+		- AF: fix some diff value invalid after calibration
+		- AF: fix some error and add SkipHighPassZoomIdx/SkipHighPassGain
+		- AF: get lowpassfv when we need to decrease cpu load
+		- AF: optimization for uvc camera
+		- AF: remove gSkipAe and change StopStep
+		- AF: speed up module calibration
+		- AF: support change focus pos in semi-auto mode
+		- AF: support dump raw file in ipc search
+		- AF: support lowpass_fv4_4 / lowpass_fv8_8 / highlht / highlht2 / ldg
+		- AF: support to get lowpassfv by user algo
+		- AF: support zoom/focus correction run simultaneously
+		- AFD: fix mem leak & POll: fix raw capture
+		- AFD: optimize afd algo
+		- ALSC: get ae exp from RKAiqAecExpInfo_t
+		- Add  IQ XML for ISP20 AVL
+		- Add rkisp_parser for 32bit-system; FIX af xml2bin and some other error;
+		- Add wdr algo
+		- CamHwIsp20: restore sp format at prepare
+		- FIX af xml2bin and some other error;
+		- FIX: ALSC: fix wrong number for free&malloc when update iq;
+		- FIX: cpsl: if mode(auto/manual) change, must update config;
+		- FIX: fmt not initialized and not configed in some case;
+		- FIX: hwi: mipi dev: rx must be closed before tx.
+		- FIX: socket: client_socket need initialization;      sockfd should be closed after accept_threads_ finishu;
+		- Fix bug in longFrameMode,which luma is different between LongFrameMode and linear
+		- Fix gic big, which paras are not set to kernel
+		- Fix initial bug of hdr in imgproc
+		- Fix tmo setlgmean bug when using rk_aiq_uapi_sysctl_stop
+		- Fix: Luma Analyzer module should not be closed when update calib;
+		- IQ: imx335: set IsRecZoomFocusPos to 0
+		- IQ: imx335: update distortion related params for LDCH/FEC
+		- Isp20PollThread: fix calculate_stride_per_line crash caused by commit b177f494
+		- Isp20PollThread: fix uninitialized var _mipi_dev_max
+		- Isp20SpThread: fix gain_isp_buf_bak size error
+		- Isp20SpThread: fix valgrind memcheck error
+		- Isp20SpThread: isp&ispp fd array size use kernel macro define
+		- NEW: add rkisp_parser for 32bit-system
+		- RK-RAW data process adapt to protocol v2.0
+		- RKISP2x Tuner v1.6.1 Release
+		- RkAiqHandleInt: Alsc: fix hdr info error cause by commit ca5567c
+		- SensorHw: remove redundant exposure settings in list
+		- Update dehaze api explaination and dehaze api flow in rk_aiq_user_api_imgproc
+		- add RKAIQ_BEGIN_DECLARE/RKAIQ_END_DECLARE for get_lpfv
+		- add afd algo
+		- ae_demo: missing some changes for commit 2db5bf47
+		- aiq: core: upload TX buf to AFD algo
+		- aiq_core: support custom and rk ae running concurrently
+		- algo: ldch: add the ability to use special mesh
+		- algo: ldch: don't reinitialize LDCH when the LDCH is reprepared
+		- algo: ldch: fix mapping error in mode switch
+		- algo: ldch: optimize process for compatibility with multiple UAPI call methods
+		- awb : add api para
+		- awb : fix bug that fail to select hdr frame when hdrFrameChooseMode =manual and switch iqxml
+		- blc: fix hwi bug
+		- calib: fix bin conversion issue caused by pointers in structure
+		- calib: fix mfnr/sharp/filter params conversion error
+		- custom_ae: fix gain convertion error
+		- custom_ae: no need re-init ae params when calib updated
+		- custom_ae: switch to rk ae automatically when custom ae disabled
+		- divide wr_gain updating into two threads
+		- dpcc: fix pdaf sensor PD correction
+		- fec: support using external mesh files
+		- fix "image horizon noise issue" bug when enable motion detection caused by commit:
+		- fix a bug that the enum "SYSCTL" of socket server is wrong
+		- fix bug in antiflicker limit
+		- fix error of dynamic changing working mode when motion enabled
+		- fix not set isppmeasparams bug when working at online mode
+		- gen_mesh: v4.0.4
+		- gen_mesh: v4.0.6
+		- ipc_server: fix deinit crash when init failed
+		- iqfiles: add some tuned iqfiles
+		- motion detection: v1.6.0
+		- motion_detection: Isp20SpThread: fix memory overflow access
+		- optimizing for ddp
+		- parser_reg: add some executable files to parse SEI information
+		- remove related unused codes
+		- rkisp_demo: add some test cases for LDCH/FEC
+		- rkisp_demo: fix comipile error introduce by commit 2db5bf4757
+		- rkisp_demo: use rk ae as default
+		- simplify custom ae
+		- support custom AE algo demo
+		- support to cfg 14 lightsources in awb module
+		- third_ae_algo: add dcgConv
+		- third_ae_algo:support nr_switch
+		- uApi: add rk_aiq_uapi_sysctl_getCurCalib/rk_aiq_uapi_sysctl_upateCalib
+		- update librkaiq_ae.a to v0.1.7.2
+
+    4. Rga
+		- Support BGR565/BGRA5551/BGRA4444
+		- Update rga api to version 1.2.6
+
+    6. MPP
+		- [drm]: Add DRM_CLOEXEC|DRM_RDWR flag on fd import
+		- [drm]: Add mmap flag detection
+		- [drm]: Fix drm handle issue
+		- [drm]: stop using drm_mmap and drm_munmap
+		- [h264d]: Optimize the sps&&pps reference codes
+		- [h264d]: Support hw resolution capability check
+		- [h264d]: if scanlist is not enable, skip it
+		- [h264d]: matching macro MAX_NUM_DPB_LAYERS with code
+		- [h264d]: optimize refer info relative process
+		- [h264d]: use impl's variable instead of mpp_frame_xx
+		- [h264d_dpb]: Fix mismatch the num of dpb_mark and fs issue
+		- [h264d_parse]: Fix prepare crash issue
+		- [h264d_parse]: skip sp/si slice
+		- [h264d_sps/pps]: Fix h264d err cause by spspps not update issue
+		- [h264d_vdpu]: Fix ref list err issue
+		- [h265d]: Fix error on split with redundant data
+		- [h265d]: Fix scaling_list address set issue
+		- [h265d]: Fix slot->status.has_frame assert issue
+		- [h265d]: Reduce  malloc/free frequency of sps/pps
+		- [h265d]: Support hw resolution capability check
+		- [h265d_34x]: Ps hal_buf not update every frame
+		- [h265d_parser2_syntax]: Optimize syntax fill
+		- [h265d_parser]: Use new method for pps change check
+		- [hal_h264d]: use memcpy instead of mpp_buffer_write
+		- [hal_h264d]: vdpu34x: simplify some put_buts writing
+		- [hal_h264d_vdpu34x]: Reduces the number of calls to mpp_put_bits()
+		- [hal_h265d]: Fix rps update issue
+		- [hal_jpegd]: Fix hal jpeg RGB output byte stride
+		- [hal_jpege_vpu]: Fix qtable memory leak
+		- [hal_vdpu34x]: Set hurry mode
+		- [hevc_vepu541]: Fix non_ref frame reg cfg issue
+		- [jpegd]: Do not parse Comment segment
+		- [jpegd]: Fix marker parsing
+		- [jpegd]: Fix parse err that do not start with soi
+		- [jpegd]: Fix parser error handling
+		- [jpegd]: Fix timeout problem
+		- [jpegd]: Suport RGB32 format output
+		- [jpegd]: handle extra JPEG header case
+		- [jpegd]: reset syntax struct before parsing
+		- [jpege]: Support jpeg enc dynamic setting rotation param
+		- [jpege]: Support writing EXIF and MPF data
+		- [license]: Add apache license file
+		- [misc]: Add O_CLOEXEC flag on file open
+		- [misc]: chmod some files to 644
+		- [mpeg4d]: Fix eos mismatch problem
+		- [mpi/mpp]: Add mpp internal start / stop function
+		- [mpi]: Add mpp_start and mpp_stop
+		- [mpi_dec_test]: Allow loop jpeg decoding test
+		- [mpp_buffer]: Fix crash on cleanup leaked buffer
+		- [mpp_buffer]: Fix error on buffer group reset
+		- [mpp_buffer]: Fix error on releasing leaked buffer
+		- [mpp_buffer]: Fix miss lock on searching group
+		- [mpp_dec]: Add batch_mode config to MppDecBaseCfg
+		- [mpp_dec]: Add more check on decoding mjpeg
+		- [mpp_enc]: Change thread name rule
+		- [mpp_enc]: Fix qp delta_ip & delta_vi check issue
+		- [mpp_enc_cfg]: Fix chroma qp offset typos
+		- [mpp_enc_impl]: Cleanup hal_task on empty eos task
+		- [mpp_enc_refs]: Fix error on mark LTR on IDR frame
+		- [mpp_list]: Update C macro
+		- [mpp_mem_pool]: Fix put_pool err
+		- [mpp_mem_pool]: Move mpp_mem_pool to osal
+		- [mpp_server]: Add mpp_server module for batch mode
+		- [mpp_thread]: Add broadcast function
+		- [mpp_thread]: Rewrite Autolock function
+		- [mpp_time_test]: Add timer test case
+		- [osal]: Add mpp_trace using ftrace
+		- [osal]: Add osal_2str function
+		- [osal]: Use strof_ function in mpp_service
+		- [rc]: Fix gop frame count update error
+		- [rc_v2]: Add bitrate statistic time cfg interface
+		- [rc_v2]: Fix bitalloc size equal 0 cause div 0
+		- [rc_v2]: Fix struct read overflow
+		- [rc_v2]: Rename stat_times to stats_time
+		- [rc_v2]: Support hierarchical QP cfg
+		- [rkv_enc_cmd]: Fix check info err when enc_cfg_set
+		- [rkv_enc_cmd]: Fix check info err when mpp_enc_cfg_set
+
+	7. RKMedia
+		- Solve the problem of decoding stuck
+		- audio_encoder_flow: fix aenc mute
+		- buffer: add clone2
+		- buffer: export handle and dev_fd
+		- c api: aenc add set mute api
+		- c api: modify buffer drop
+		- c api: modify buffer drop log level
+		- c api: remove extra buffer depth check
+		- c api: venc support set full range
+		- c_api: VI: add RK_MPI_VI_GetStatus API
+		- c_api: add RK_MPI_SYS_RegisterOutCbEx api
+		- c_api: fix AENC incorrect use VI mutex
+		- c_api: fix FBC0 jpeg disable osd
+		- c_api: fix jpeg SetBitMap
+		- c_api: venc support set h265 scaling_list
+		- c_api: venc support set hierachy qp
+		- c_api: vi: fix dead lock in RK_MPI_VI_GetStatus interface
+		- c_api: vmix: support RK_MPI_SYS_GetMediaBuffer
+		- example: add aenc_test
+		- example: implement a demo to caputre runtime vi and offline frames
+		- fix AI ANR
+		- jpeg enc: if crop is 0 set full
+		- media_config.cc: fix debug error
+		- mpp encoder: jpeg/mjpeg: Turn off the log to fix JPEG encoding taking a long time.
+		- mpp: config: trans8x8 should set to 1 when profile=100 in h264 mode
+		- mpp_encoder.cc: check jpeg thumbnail return
+		- mpp_encoder.cc: mppencode init all private variable
+		- mpp_encoder: fixed jpeg rga osd display error
+		- mpp_final_encoder: fix qp_row setting
+		- muxer: add flv type
+		- muxer: fix pre record memory process
+		- muxer: fix pts jitter
+		- muxer: removes end-of-file flag with frame I
+		- muxer: support lapse record
+		- muxer_flow.cc: increase mux flow input buffer
+		- muxer_flow.cc: use blocking mode
+		- muxer_flow: fix timestamp jitter when split file
+		- muxer_flow: fixed slip file drop frame
+		- muxer_flow: fixed stop stream event sending timing
+		- muxer_flow: support set pre-record mode
+		- occlusion_detection_flow: when od status is false, the function of occlusion_detection also return false.
+		- rkaudio: fix bug build fail
+		- rkmedia buffer: add audio buffer external api
+		- rkmedia: add server
+		- rkmedia_api.cc: remove h265 flow from jpeg
+		- rkmedia_venc_jpeg_test: venc crop align 2
+		- rkmedia_vi_vo_test.c: rkmedia not support create multiple vo channel
+		- rkmedia_vmix_vo_dvr_test: disable vmix buffer pool
+		- rkmpp: MPF1 don't display osd
+		- rkmpp: encoder: fix yuvyv422 Vertical stripes.
+		- rkmpp: set jpeg osd rga color_space_mode to full range
+		- rkmpp: support jpeg thumbnail
+		- rkmpp: vdec: support yuv444sp
+		- src: coding style format by clang-format-8
+		- src: flow: filter flow fill black for buffer
+		- stream: display: drm_disp: fixes typo
+		- stream: v4l2: make first frame log nice
+		- v4l2_stream.cc: alloc once when mulitple call set user picture
+		- venc: init venc attribute and media config
+		- video_encoder_flow.cc: all encoder packet clone a buffer before send
+		- videoencode: support get param from rkmpp
+
+	9. kernel
+		- Add RK628 driver support
+		- Add ES7210/ES7243E driver support
+		- media: Add motor driver fp5501 for camera focus/zoom
+		- media: i2c: add camera driver hynix hi556
+		- media: i2c: add camera driver hynix hi846
+		- media: i2c: add driver for ov9281@30fps
+		- media: i2c: add strobe control & fix expsoure for ov9281.
+		- media: i2c: gc02m2 fixes the base value of digital gain to avoid purple in the light
+		- media: i2c: imx178 fix some errors for exposure and gain
+		- media: i2c: imx258 support capture spd data and embedded data
+		- media: i2c: imx317 fixed g_mbus_config error
+		- media: i2c: imx335: fixed short exposure calc err in DOL2 mode
+		- media: i2c: imx347 fix setting flow error and fix hdr gain error
+		- media: i2c: imx415: support get sony BRL
+		- media: i2c: imx415: support thunderboot mode
+		- media: i2c: modify ov9281 driver for thunderboot.
+		- media: i2c: os02g10 fix set flip/mirror failed bug and fix wrong vts_def
+		- media: i2c: os04c10: fix the gain error problem
+		- media: i2c: os04c10: support thunderboot mode
+		- media: i2c: ov4688: add 16x dgain, ratio = dgain/2048
+		- media: i2c: ov7251 support 640x480@120fps mode
+		- media: i2c: sc035hgs fix time sequence error when streaming on
+		- media: i2c: sc2310 fixed hdr probabilistically fail to capture images and pm issue
+		- media: i2c: support imx178 lvds sensor driver
+		- media: i2c: support imx462 sensor driver
+		- media: i2c: support os08a20 sensor driver
+		- media: i2c: support sc035hgs sensor driver
+		- media: i2c: support sc2335 sensor driver
+		- media: i2c: support sc5239 sensor driver
+		- media: i2c: support sc8220 sensor driver
+		- media: i2c: techpoint: add support audio feature
+		- media: platform: cif fix fs/fe count error
+		- media: platform: cif: add dummy buf only for BT.656/BT.1120 multi channels function
+		- media: platform: cif: fix multi dev issue
+		- media: platform: cif: mipi support interlaced capture
+		- media: platform: ispp: destory ispp buffers if start_stream failed
+		- media: platform: rockchip: cif: add keeping time to csi2 err for resetting
+		- media: platform: rockchip: cif: do reset when mipi fs & fe are not paired
+		- media: platform: rockchip: cif: fix iommu lose effectiveness when do cru reset
+		- media: platform: rockchip: cif: fix rk356x iommu issue
+		- media: platform: rockchip: cif: set stopping time out as fps when reset cif
+		- media: rockchip: cif: fixed vc err in HDR mode
+		- media: rockchip: cif: fixed vc err in linear mode, if sensor driver not had vc config
+		- media: rockchip: cif: mipi wakes up buf by line int
+		- media: rockchip: cif: remove dummy buffer
+		- media: rockchip: cif: support pdaf/embedded data
+		- media: rockchip: fix isp and ispp share dmabuf release fail
+		- media: rockchip: isp/ispp to version v1.6.2
+		- media: rockchip: isp/ispp: declare slab.h for kmalloc/kfree
+		- media: rockchip: isp: add bt601/bt709/bt2020 colorspace
+		- media: rockchip: isp: add v-blank to procfs
+		- media: rockchip: isp: clear rdbk fifo at dmarx stop
+		- media: rockchip: isp: dmatx support embedded and shield pixels data
+		- media: rockchip: isp: fix set pdaf in dpcc error
+		- media: rockchip: isp: fix sp no output when hdr dynamic switch
+		- media: rockchip: isp: frame buffer done early
+		- media: rockchip: isp: reserved memory using rdma_sg ops
+		- media: rockchip: isp: update procfs info
+		- media: rockchip: ispp: fbc error handle
+		- media: rockchip: ispp: first frame handle for multi dev
+		- media: rockchip: ispp: fix bug that ispp register isn't included in SEI
+		- media: rockchip: ispp: fix driver mode sync with ispserver
+		- media: rockchip: ispp: fix page fault due to config reg during working
+		- media: rockchip: ispp: fix page fault due to scl exit early
+		- media: rockchip: ispp: frame buffer done early
+		- media: rockchip: ispp: reserved memory using rdma_sg ops
+		- media: rockchip: ispp: reset at frame end
+		- media: spi: add motor driver ms41908
+		- media: spi: ms41908 fixed complete bug
+		- media: spi: ms41908: support focus/zoom reinit run simultaneously
+		- media: spi: ms41908: zoom/focus use different reback value
+		- media: uapi: Add EBD and SPD media bus format
+		- media: v4l2-controls_rockchip: add private controls for audio
+		- media: v4l: add embedded data and shield pix data format
+		- soc: rockchip: mtd_vendor_storage: Register vendor_storage later
+		- soc: rockchip: opp_select: Convert opp rate unit to MHz
+		- video/rockchip: rga2: Add format support
+		- video/rockchip: rga2: Add new features in compat_ioctl.
+		- video/rockchip: rga2: Add support for full csc (RGB2YUV/YUV2YUV).
+		- video/rockchip: rga2: Fix MMU base not shift forward.
+		- video/rockchip: rga2: Fix rga2_dma_flush_page warnning
+		- video/rockchip: rga2: Fix the initialization of RGA2 version number
+		- video/rockchip: rga2: Fix the wrong judgment of err_get_sg.
+		- video/rockchip: rga2: Modify blend formula
+		- video/rockchip: rga2: Remove the useless code about the src1 channel
+		- video/rockchip: rga2: Replace <asm/uaccess.h> with <linux/uaccess.h> globally
+		- video/rockchip: rga2: adapt to kernel 5.10
+		- video/rockchip: rga2: support Y400 input.
+		- video: rockchip: mpp: workaround patch for rv1126 iommu issue
+
+	11. u-boot
+		- UPSTREAM: board: arm: Add support for Broadcom BCM7445
+		- UPSTREAM: cmd/fs: fix build if CMD_BOOTEFI is not set
+		- UPSTREAM: dm: spi: Check cs number before accessing slaves
+		- UPSTREAM: dm: spi: Do not assume first SPI bus
+		- UPSTREAM: dm: spi: Return 0 if driver does not implement ops->cs_info
+		- UPSTREAM: dm: spi: prevent setting a speed of 0 Hz
+		- UPSTREAM: mtd: spi-nor-core: Add octal mode support
+		- UPSTREAM: mtd: spi-nor-core: Replace MTD_SPI_NOR_USE_4K_SECTORS with SPI_FLASH_USE_4K_SECTORS
+		- UPSTREAM: mtd: spi-nor-core: Use dev_err for reporting erase/write failures
+		- UPSTREAM: mtd: spi-nor-ids: Add Gigadevice GD25LQ64C
+		- UPSTREAM: mtd: spi-nor-ids: Add SECT_4K to mx25l12805d
+		- UPSTREAM: mtd: spi-nor-ids: Add Spansion s25fs512s flash entry
+		- UPSTREAM: mtd: spi-nor-ids: Add Winbond W25M512JV flash entry
+		- UPSTREAM: mtd: spi-nor-ids: Add Winbond W25M512JW flash entry
+		- UPSTREAM: mtd: spi-nor-ids: Add support of flash protection to w25q128
+		- UPSTREAM: mtd: spi-nor-ids: Enable 4B_OPCODES for is25wp256
+		- UPSTREAM: mtd: spi-nor-ids: Enable SPI_NOR_OCTAL_READ flag for mt35xu*
+		- UPSTREAM: mtd: spi-nor-ids: add Micron MT25QL01G flash
+		- UPSTREAM: mtd: spi-nor-ids: add Winbond W25Q32JW-IM flash
+		- UPSTREAM: mtd: spi-nor-ids: add support for Macronix mx25u12835f flash
+		- UPSTREAM: mtd: spi-nor: Enable dual and quad read for s25fl256s0
+		- UPSTREAM: mtd: spi-nor: add missing SST26* flash IC protection ops
+		- UPSTREAM: mtd: spi-nor: enable protection ops for SST26 flash series
+		- UPSTREAM: mtd: spi-nor: ids: Add is25wp256 chip
+		- UPSTREAM: mtd: spi: Add Macronix MX25U3235F device
+		- UPSTREAM: mtd: spi: Add a new option SPL_SPI_FLASH_MTD to Kconfig
+		- UPSTREAM: mtd: spi: Add flash property for Micron mt25qu512a
+		- UPSTREAM: mtd: spi: Add micron mt35xu512aba and mt35xu02g flash ID
+		- UPSTREAM: mtd: spi: Drop sf.c
+		- UPSTREAM: mtd: spi: Kconfig: Update CONFIG_SPI_FLASH
+		- UPSTREAM: mtd: spi_dataflash: Use spi read then write
+		- UPSTREAM: sf: Add Macronix MX25R6435F SPI NOR flash to flash parameters array
+		- UPSTREAM: spi-nor-ids: Add support for Adesto AT25SL321
+		- UPSTREAM: spi-nor: spi-nor-ids: Add USE_FSR flag for mt25q* and n25q* entry
+		- UPSTREAM: spi-nor: spi-nor-ids: Add entries for mt25q variants
+		- UPSTREAM: spi-nor: spi-nor-ids: Disable SPI_NOR_4B_OPCODES for n25q512* and n25q256*
+		- UPSTREAM: spi: Add spi_write_then_read
+		- UPSTREAM: spi: Add support for memory-mapped flash
+		- UPSTREAM: spi: Correct operations check in dm_spi_xfer()
+		- UPSTREAM: spi: Fix manual relocation calling more times
+		- UPSTREAM: spi: prevent overriding established bus settings
+		- UPSTREAM: spi: spi-uclass: Block dm_scan_fdt_dev with OF_CONTROL to prevent build failures
+		- UPSTREAM: spi: spi-uclass: Fix spi_claim_bus() speed/mode setup logic
+		- UPSTREAM: usb: kbd: fix typo
+		- UPSTREAM: usb: kbd: implement special keys
+		- UPSTREAM: usb: kbd: signature of usb_kbd_put_queue()
+		- UPSTREAM: usb: kbd: simplify coding for arrow keys
+		- arm: crt0_64.S: don't set SCTLR.A=1
+		- arm: crt0_64: Enable sctlr A/SA bit for EL3/2/1
+		- arm: dts: support build and append embedded kernel dtb
+		- arm: system.h: Add more interface to access register
+		- arm: v7/v8: Enable SError/Asynchronous external abort for TPL/SPL/U-Boot
+		- arm: v8: support disable Dcache
+		- avb: otp: support avb hash download
+		- cmd: ddr_tool: ddr_dq_eye: fix print range of DDR DQ eye
+		- cmd: rockusb: convert return vlaue from block layer
+		- common: android: delete reset_cpu_if_android_ab()
+		- common: android: free non-reloc U-Boot code
+		- common: board_r: Add CR state print
+		- common: bootm: Enable decompress related message
+		- common: correct autoboot_command_fail_handle() position
+		- common: fdt: fix kern.dtb cleared by BSS zero operation
+		- common: fdt_support: add fdt_bootargs_append_ab()
+		- common: fdt_support: add fdt_bootargs_append_ab()
+		- common: fdt_support: filter invalid size
+		- common: image-fit: show short image hash string in SPL
+		- common: image-sig: Add comment for failure handle
+		- common: image/gunzip: sync with new API param
+		- common: usb: fix endpoints number in interface descriptor
+		- common: usb_kbd: add API to identify F1~F12
+		- configs: Add config for rv1126 mini memory
+		- configs: rv1126-emmc-tb: support CONFIG_MMC_USE_PRE_CONFIG
+		- configs: rv1126-spi-nor-tb.config: update CONFIG_SPL_FIT_IMAGE_KB size
+		- configs: rv1126-spi-nor-tiny: support MMC device
+		- configs: rv1126: new configuration for rv1126-bat-evb
+		- configs: rv1126: remove uimage support
+		- configs: rv1126: support CONFIG_SPL_MMC_WRITE
+		- core: dump: show device address
+		- cpu: amp: modify default address for each CPU.
+		- cpu: rockchip amp: check boot cpu before sysmem alloc
+		- disk: Add ram partition table support
+		- disk: efi: skip is_pmbr_valid()
+		- disk: rkparm: Remove ram partition support
+		- driver: pci: rockchip: Decrease waiting time for linking
+		- drivers: crypto v1: fix RSA2048 multiple call error
+		- drivers: ram: common: fix ssmod define err
+		- drivers: ram: rv1126: Add addrmap for ddrconf 23~28
+		- drivers: ram: rv1126: Modify tRFC and related timing based on DDR capacity
+		- drivers: ram: rv1126: Set default value of die bus with to x16 when bus width is x16/x32 of DDR3
+		- drivers: ram: rv1126: Support x16 bus width of LPDDR4(X)
+		- drivers: ram: rv1126: Turn on DQS_c 2k pull-up resistor to workaround WDQS control of LPDDR4/LPDDR4X
+		- drivers: ram: rv1126: Use ARRAY_SIZE to calculate copy size to set ADDRMAP regs
+		- drivers: ram: rv1126: add split support
+		- drivers: ram: rv1126: add ssmod support
+		- drivers: ram: rv1126: add support lpddr4x
+		- drivers: ram: rv1126: fix calculating of MSCH_DeviceSize
+		- drivers: ram: rv1126: fix data types of wr_lvl result for wr train
+		- drivers: ram: rv1126: fix incorrect setting of LPDDR4(X) tRFC
+		- drivers: ram: rv1126: fix lpddr4 phy side odt err
+		- drivers: ram: rv1126: fix return value of read_mr()
+		- drivers: ram: rv1126: fix sdram_detect_row of LPDDR4/X
+		- drivers: ram: rv1126: fix tZQLAT of LPDDR4
+		- drivers: ram: rv1126: fix the judgment of "set ctl address map fail"
+		- drivers: ram: rv1126: workaround pageclose bug
+		- drivers: rkflash: Add some delay after DMA finish
+		- drivers: rkflash: Support new flash
+		- drivers: video: rk_eink: adjust panel power on/off sequence
+		- drivers: video: rk_eink: support multi pmics define
+		- drm/rockchip: hdmi: Support read hdmi information from aux block of baseparameter
+		- drm/rockchip: vop2: add adjust cursor plane
+		- drm/rockchip: vop2: add more debug info
+		- drm/rockchip: vop2: fix esmart0 register error.
+		- drm/rockchip: vop2: if dts assign plane mask no need to update this property
+		- drm/rockchip: vop2: sync vop2 limit from kernel
+		- drm/rockchip: vop2: use the first unplug devices as main display
+		- drm/rockchip: vop: correct the dclk_inv
+		- f_rockusb: support write ta encryption key
+		- fuel gauge: rk816/8: Add nonstandard charger check
+		- gpt: Force repair backup GPT after factory or OTA upgrade GPT
+		- include: global_data: let fdt_blob_kern be a default member
+		- irq: generic: use common API
+		- irq: simplify the #if expression
+		- lib: avb: add function rk_avb_ab_have_bootable_slot()
+		- lib: avb: avb_atx_validate: fix crypto sha512 fail
+		- lib: optee_client: add interface for write ta encryption key
+		- lib: optee_clientApi: remove duplicate code
+		- lib: rsa-verify: pass the public key to next stage
+		- make.sh: print build time
+		- misc: decompress: add flags function field
+		- misc: decompress: clean up some API as private
+		- misc: rockchip_decompress: enable interrupt
+		- mmc: dw_mmc: discard 100us delay after sending command
+		- mmc: dw_mmc: fixes bus-width=<1> handling
+		- mtd: mtd_blk: Clear DMA_PREPARE tag after transmission
+		- mtd: mtd_blk: Ensure the right mtd device information
+		- mtd: nand: rockchip: Fix error in calculating nand block boundary
+		- mtd: nand: rockchip: Support S34ML08G2
+		- mtd: spi-nor-ids: mx25u12835f support dual/quad mode
+		- mtd: spinand: Change to correct copyright
+		- mtd: spinand: Support DS35Q2GB
+		- mtd: spinand: Support W25N04KV
+		- mtd: spinand: Support new device
+		- mtd: spinand: Support new devices
+		- phy: rockchip: select phy by default for rockchip
+		- pinctrl: rockchip: rv1126: fix mux route error
+		- power: pmic: rk8xx: SYS shut down voltage select 2900mV
+		- ram: dm ramdisk: Select new ram partition driver
+		- regulator: fixed: Enable gpio when requested
+		- rk_eink: support show poweroff image
+		- rockchip: Add dm ramdisk compatibility support
+		- rockchip: Kconfig: Wrap options by !ROCKCHIP_FIT_IMAGE_PACK
+		- rockchip: atags: add function atags_set_pub_key()
+		- rockchip: board: call ab_decrease_tries() earlier
+		- rockchip: board: call reset if boot fail when enable ab
+		- rockchip: board: reserve sysmem for non-reloc U-Boot code
+		- rockchip: board: support reload kernel dtb for bootm
+		- rockchip: dts: rv1126-bat-evb: rectify adc key configuration
+		- rockchip: dts: rv1126: enable sdmmc1 to quote
+		- rockchip: dts: support rv1126 battery evb board
+		- rockchip: fit/uimage: only init resource list
+		- rockchip: fit: fix cannot get kernel fdt if boot/recovery.img is corrupted
+		- rockchip: fit_misc: correct the config
+		- rockchip: fit_misc: enable dcompress oneshot IRQ for spi-nand
+		- rockchip: kernel dtb: Avoid data-abort from corrupted DTB
+		- rockchip: kernel dtb: Get fdt addr for critial memory board
+		- rockchip: kernel dtb: don't validate current fdt depend on magic check
+		- rockchip: kernel dtb: return success if not find cru node
+		- rockchip: make fit: update padding algo
+		- rockchip: param: simplify the #if expression
+		- rockchip: resource logo: Correct file->rsce_base for logo_kernel.bmp
+		- rockchip: resource: refactor code
+		- rockchip: resource: rename DTB_FILE to DEFAULT_DTB_FILE
+		- rockchip: rv1126: Define addr for critial memory board
+		- rockchip: rv1126: change priority of isp\ispp\cpu\vepu\sdmmc
+		- rockchip: rv1126: change some addresses with uboot
+		- rockchip: rv1126: fix typo
+		- rockchip: spl: init gd->flags as dummy
+		- rockchip: spl: support get boot mode
+		- rockchip: usbplug: support mtd devices
+		- rockchip: vendor: Sync vendor id define from Linux
+		- rockusb: support avb bin download
+		- rv1126: ddr: fix tx dqs bypass phase setting err
+		- scripts: android2distro.sh transform Android image to Distro image
+		- scripts: fit-resign.sh: update comment
+		- scripts: fit.sh: --burn-key-hash requires CONFIG_SPL_FIT_HW_CRYPTO=y
+		- scripts: stacktrace: handle PC on thumb instr
+		- scripts: stacktrace: print PC surrounding instructions
+		- scripts: stacktrace: use '{}' for variables
+		- spi: rockchip_sfc: Ajudst the dll strategy
+		- spl: fit: append mtd part info to dtb if BLK_MTD_SPI_NAND in kernel boot
+		- spl: fit: fix change the board_fit_image_post_process()
+		- spl: fit: support pass a/b system info kernel
+		- spl: nand: remove garbage collection to reduce code size
+		- tools: rockchip: bmp2gray16: support eink power off logo
+		- video/drm: add framebuffer_info
+		- video/drm: combo_phy: Add support RK356X dsi
+		- video/drm: combo_phy: modified phy difference description
+		- video/drm: display: add force mode and default mode support
+		- video/drm: dsi: disable phy when power off
+		- video/drm: vop2: fix interlace fild pol config error
+
 [ rv1126_rv1109_linux_v2.1.0_20210512.xml ]
 
     SDK update lists:
