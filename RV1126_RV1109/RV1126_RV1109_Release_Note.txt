@@ -18,7 +18,7 @@
 		- docs/RV1126_RV1109/RV1126_RV1109_Release_Note.txt
 		- docs/RV1126_RV1109/Rockchip_RV1126_RV1109_Instruction_Linux_Separate_Building_EN.pdf
 
-    3. Camera_engine_rkaiq: update AIQ version to v1.0x67.2, the detail are as follows:
+    3. Camera_engine_rkaiq: update AIQ version to v1.0x67.3, the detail are as follows:
 		- ACCM: get ae exp from RKAiqAecExpInfo_t
 		- AE: add log & sihist data
 		- AE: modify ReConfig Check
