@@ -11,8 +11,8 @@
     2. Docs update these:
 		- docs/RV1126_RV1109/Fastboot/Rockchip_Developer_Guide_RV1126_RV1109_Battery_Product_CN.pdf
 		- docs/RV1126_RV1109/Fastboot/Rockchip_Developer_Guide_RV1126_RV1109_Battery_Product_EN.pdf
-		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_CN_v1.0.6.pdf
-		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_EN_v1.0.6.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_CN_v1.0.7.pdf
+		- docs/RV1126_RV1109/RV1126_RV1109/Camera/Rockchip_Driver_Guide_VI_EN_v1.0.7.pdf
 		- docs/RV1126_RV1109/RV1126_RV1109_IO_Power_Domain_Configuration_Developer_Guide.pdf
 		- docs/RV1126_RV1109/RV1126_RV1109_IO_电源域配置指南.pdf
 		- docs/RV1126_RV1109/RV1126_RV1109_Release_Note.txt
