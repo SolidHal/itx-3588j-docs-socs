@@ -7,6 +7,14 @@
 [TOC]
 
 ---
+## rk3588_linux_beta_v0.1.1_20220421.xml Note
+
+### Fixes bugs
+
+- Support midi and fluidsynth format for gstreamer
+- Convert github git:// to https:/ on buildroot
+- Support mpp fast-mode property
+
 ## rk3588_linux_beta_v0.1.0_20220414.xml Note
 
 ```
