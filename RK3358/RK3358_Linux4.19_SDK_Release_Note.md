@@ -1,4 +1,4 @@
-# RK3326 Linux4.19 SDK Release Note
+# RK3358 Linux4.19 SDK Note
 
 ---
 
@@ -7,7 +7,7 @@
 [TOC]
 
 ---
-## rk3326_linux4.19_release_v1.2.0_20220620.xml Release Note
+## rk3358_linux_release_v1.1.0_20220620.xml Release Note
 
 **Buildroot(2018.02-rc3)**
 
@@ -52,10 +52,10 @@
 
 ```
 - Add slt_gpu_light
-    - Add slt_gpu_light lib for PX30-S/RK3326-S
+	- Add slt_gpu_light lib for PX30-S/RK3326-S
 ```
 
-## rk3326_linux4.19_release_v1.0.0_20210520.xml Release Note
+## rk3358_linux_release_v1.0.0_20211230.xml Note
 
 ```
 - The first release version
